@@ -12,10 +12,10 @@ public class Student {
 
 
     public Student(String fname, String lastName, Grades grades, ClassName className ){
-        firstName=fname;
-        this.lastName=lastName;
-        this.grades=grades;
-        this.className=className;
+        firstName = fname;
+        this.lastName = lastName;
+        this.grades = grades;
+        this.className = className;
     }
 
     public void setSalary(int salary) {

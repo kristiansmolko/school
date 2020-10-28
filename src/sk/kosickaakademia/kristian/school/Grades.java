@@ -25,6 +25,6 @@ public class Grades {
 
     @Override
     public String toString() {
-        return "Grades: MAT: "+mat+"  ENG: "+eng+"  PRO: "+pro;
+        return "Grades: MAT: " + mat + "  ENG: " + eng + "  PRO: " + pro;
     }
 }
