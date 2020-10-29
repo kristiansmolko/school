@@ -10,12 +10,25 @@ public class Main {
         Student[] students;
         students = initStudents();
 
-        printN1Students(students);
-        printStudentsWhereAverageLE2(students);
+        //printN1Students(students);
+        //printStudentsWhereAverageLE2(students);
+        printThisYears(students);
         /*for(Student student : students){
             student.print();
         }*/
 
+    }
+
+    //1.1.2000 "2000-1-1"
+    private static void printThisYears(Student[] students) {
+        System.out.println("\033[32mStudents younger than 18: \033[0m");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+        for (int i = 0; i < students.length; i++){
+            Date dates = students[i].getDob();
+            String year = dateFormat.format(dates);
+            if (Integer.parseInt(year) > 2000)
+                students[i].print();
+        }
     }
 
     private static void printStudentsWhereAverageLE2(Student[] students) {
@@ -36,7 +49,6 @@ public class Main {
                 System.out.println("   " + students[i].getFirstName() + " " + students[i].getLastName());
             }
         }*/
-
         for (Student student : students){
             if (student.getClassName() == ClassName.N1){
                 student.print();
@@ -44,6 +56,8 @@ public class Main {
         }
         System.out.println();
     }
+
+
 
     private static Student[] initStudents() {
         Student[] s = new Student[10];
