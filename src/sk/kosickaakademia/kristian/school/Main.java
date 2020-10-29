@@ -10,10 +10,39 @@ public class Main {
         Student[] students;
         students = initStudents();
 
-        for(Student student : students){
+        printN1Students(students);
+        printStudentsWhereAverageLE2(students);
+        /*for(Student student : students){
             student.print();
-        }
+        }*/
 
+    }
+
+    private static void printStudentsWhereAverageLE2(Student[] students) {
+        System.out.println("\033[34mList of students with average of 2 or less: \033[0m");
+        for (int i = 0; i < students.length; i++){
+            Grades grades = students[i].getGrades();
+            double average = (double) (grades.getMat() + grades.getEng() + grades.getPro())/3;
+            if (average <= 2){
+                System.out.println("   " + students[i].getFirstName() + " " + students[i].getLastName());
+            }
+        }
+    }
+
+    private static void printN1Students(Student[] students) {
+        System.out.println("\033[34mList of 1N students: \033[0m");
+        /*for (int i = 0; i < students.length; i++) {
+            if (students[i].getClassName() == ClassName.N1) {
+                System.out.println("   " + students[i].getFirstName() + " " + students[i].getLastName());
+            }
+        }*/
+
+        for (Student student : students){
+            if (student.getClassName() == ClassName.N1){
+                student.print();
+            }
+        }
+        System.out.println();
     }
 
     private static Student[] initStudents() {
