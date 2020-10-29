@@ -12,7 +12,8 @@ public class Main {
 
         //printN1Students(students);
         //printStudentsWhereAverageLE2(students);
-        printThisYears(students);
+        //printThisYears(students);
+        printAge(students);
         /*for(Student student : students){
             student.print();
         }*/
@@ -28,6 +29,51 @@ public class Main {
             String year = dateFormat.format(dates);
             if (Integer.parseInt(year) > 2000)
                 students[i].print();
+        }
+    }
+
+    private static void printAge(Student[] students){
+        // 2020-2005
+        // localDate - dob
+        DateFormat y = new SimpleDateFormat("yyyy");
+        DateFormat m = new SimpleDateFormat("MM");
+        DateFormat d = new SimpleDateFormat("dd");
+        System.out.println("\033[32mAge of students: \033[0m");
+        for (int i = 0; i < students.length; i++){
+            Date dates = students[i].getDob();
+            int year = Integer.parseInt(y.format(dates));
+            int month = Integer.parseInt(m.format(dates));
+            int day = Integer.parseInt(d.format(dates));
+            Date today = new Date();
+            int todayYear = Integer.parseInt(y.format(today));
+            int todayMonth = Integer.parseInt(m.format(today));
+            int todayDay = Integer.parseInt(d.format(today));
+            int result = 0;
+            boolean birthday = false;
+            /* //ta jednoducha uloha
+            result = todayYear - year;
+            System.out.println(students[i].getFirstName() + " " + students[i].getLastName() + " " + result); */
+            // that complicated
+            if (todayMonth > month){
+                result = todayYear - year;
+            }
+            else if (todayMonth < month){
+                result = todayYear - year - 1;
+            }
+            else{
+                if (todayDay > day)
+                    result = todayYear - year;
+                else if (todayDay == day){
+                    result = todayYear - year - 1;
+                    birthday = true;
+                }
+                else
+                    result = todayYear - year - 1;
+            }
+            if (birthday == true)
+                System.out.println("\033[35m" + students[i].getFirstName() + " " + students[i].getLastName() + " " + result + "\033[0m");
+            else
+                System.out.println(students[i].getFirstName() + " " + students[i].getLastName() + " " + result);
         }
     }
 
@@ -65,12 +111,12 @@ public class Main {
         Grades student1 = new Grades(1,2,3);
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        Date dobS1 = getDate(sdf, "2001-05-10");
+        Date dobS1 = getDate(sdf, "2000-10-29");
         Student s1 = new Student("Janko", "Hrasko", student1, dobS1, ClassName.N1, 200);
         s[0] = s1;
 
         Grades student2 = new Grades(1, 1, 1);
-        Date dobS2 = getDate(sdf, "1995-10-15");
+        Date dobS2 = getDate(sdf, "1990-10-30");
         Student s2 = new Student("Marienka", "Nejaka", student2, dobS2, ClassName.N2, 0);
         s[1] = s2;
 
