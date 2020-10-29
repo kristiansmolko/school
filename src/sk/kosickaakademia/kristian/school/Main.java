@@ -7,30 +7,55 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
+        Student[] students;
+        students = initStudents();
+
+        for(Student student : students){
+            student.print();
+        }
+
+    }
+
+    private static Student[] initStudents() {
+        Student[] s = new Student[10];
+
         Grades student1 = new Grades(1,2,3);
         DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         Date dobS1 = getDate(sdf, "2001-05-10");
         Student s1 = new Student("Janko", "Hrasko", student1, dobS1, ClassName.N1, 200);
-        s1.print();
+        s[0] = s1;
 
         Grades student2 = new Grades(1, 1, 1);
         Date dobS2 = getDate(sdf, "1995-10-15");
         Student s2 = new Student("Marienka", "Nejaka", student2, dobS2, ClassName.N2, 0);
-        s2.print();
+        s[1] = s2;
 
         Grades student3 = new Grades(2,2,2);
-        Date dobS3 = getDate(sdf, "1990-2-5");
-        Student s3 = new Student("Marian", "Ano", student3, dobS3, ClassName.N1, 1500);
-        s3.print();
+        Student s3 = new Student("Marian", "Ano", student3, getDate(sdf, "1990-2-5"), ClassName.N1, 1500);
+        s[2] = s3;
 
-        Grades student4 = new Grades(1,2,5);
         Date dobS4 = getDate(sdf, "2000-10-5");
-        Student s4 = new Student("Adam", "Marek", student4, dobS4, ClassName.N3, 1000);
-        s4.print();
+        Student s4 = new Student("Adam", "Marek", new Grades(1,2,5), dobS4, ClassName.N3, 1000);
+        s[3] = s4;
 
+        Student s5 = new Student("Ivana", "Mackovych", new Grades(1,1,1), getDate(sdf, "2000-2-5"), ClassName.N1, 600);
+        s[4] = s5;
 
+        String[] fnames = new String[] {"Jakub", "Marek", "Zuzka", "Nikola", "Dominika"};
+        String[] lnames = new String[] {"Nemec", "Slovak", "Cechova", "Malikova", "Malikova"};
+        int[] mat = new int[] {1, 1, 4, 3, 2};
+        int[] eng = new int[] {5, 1, 2, 1, 1};
+        int[] pro = new int[] {2, 1, 3, 2, 2};
+        String[] dates = new String[] {"2000-10-20", "1990-1-1", "1980-5-5", "2001-10-5", "1999-9-9"};
+        ClassName[] classNames = new ClassName[] {ClassName.N1, ClassName.N1, ClassName.N3, ClassName.N2, ClassName.N1};
+        int[] salaries = new int[] {0, 1000, 2500, 600, 800};
 
+        for (int i = 0; i<5; i++){
+            s[i+5] = new Student(fnames[i], lnames[i], new Grades(mat[i], eng[i], pro[i]), getDate(sdf, dates[i]), classNames[i], salaries[i]);
+        }
+
+        return s;
 
     }
 
