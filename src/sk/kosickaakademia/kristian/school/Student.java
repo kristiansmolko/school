@@ -19,8 +19,6 @@ public class Student {
     private Hobby[] hobbies;
     private int countHobbies;
 
-
-
     public Student(String fname, String lastName, Grades grades, Date date, ClassName className, int salary){
         firstName = fname;
         this.lastName = lastName;
@@ -73,7 +71,7 @@ public class Student {
         System.out.println("Class: " + className);
         System.out.println("Salary: " + salary);
         System.out.println(grades.toString());
-
+        printHobbies();
     }
 
     public void addHobby(Hobby newHobby){
