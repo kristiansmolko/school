@@ -1,8 +1,6 @@
 package sk.kosickaakademia.kristian.school;
 
-import sk.kosickaakademia.kristian.school.hobby.Book;
-import sk.kosickaakademia.kristian.school.hobby.Hobby;
-import sk.kosickaakademia.kristian.school.hobby.Movie;
+import sk.kosickaakademia.kristian.school.hobby.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -85,11 +83,20 @@ public class Student {
     public void printHobbies(){
         System.out.println("\033[34mStudent's hobby: \033[0m");
         for (int i = 0; i < countHobbies; i++) {
-            if (hobbies[i] instanceof Book)
-                System.out.print("\033[33m" + ((Book) hobbies[i]).getAuthor() + "\033[0m" + " - ");
-            if (hobbies[i] instanceof Movie)
-                System.out.print("\033[33m" + ((Movie) hobbies[i]).getYear() + "\033[0m" + " - ");
-            System.out.println(hobbies[i].getName());
+            if (hobbies[i] instanceof Programming)
+                System.out.print("\033[35m");
+            System.out.print(hobbies[i].getName() + "\033[0m");
+            if (hobbies[i] instanceof Book){
+                System.out.print(" - " + "\033[33m" + ((Book) hobbies[i]).getAuthor() + "\033[0m");
+            }
+            if (hobbies[i] instanceof Movie){
+                System.out.print(" - " + "\033[33m" + ((Movie) hobbies[i]).getYear() + "\033[0m");
+            }
+            if (hobbies[i] instanceof Games){
+                System.out.print(" - " + "\033[33m" + (((Games) hobbies[i]).getGenre()) + "\033[0m");
+            }
+            System.out.println();
         }
+        System.out.println();
     }
 }

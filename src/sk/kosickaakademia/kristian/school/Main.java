@@ -1,8 +1,6 @@
 package sk.kosickaakademia.kristian.school;
 
-import sk.kosickaakademia.kristian.school.hobby.Book;
-import sk.kosickaakademia.kristian.school.hobby.Movie;
-import sk.kosickaakademia.kristian.school.hobby.Sport;
+import sk.kosickaakademia.kristian.school.hobby.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -29,10 +27,20 @@ public class Main {
         students[0].addHobby(b2);
         Movie m1 = new Movie("Aladdin", 2019);
         students[0].addHobby(m1);
+        Programming p1 = new Programming("Java");
+        students[0].addHobby(p1);
+        b1 = new Book("Na zapade nic nove", "E.M.Remarque");
+        students[2].addHobby(b1);
+        s1 = new Sport("Football");
+        students[1].addHobby(s1);
+        students[2].addHobby(p1);
+        Games g1 = new Games("League of Legends", "life-drainer");
+        students[0].addHobby(g1);
+        students[5].addHobby(g1);
+        students[4].addHobby(g1);
+        students[9].addHobby(p1);
 
-        students[0].printHobbies();
-
-
+        printAllStudents(students);
     }
 
     private static void sortByAverage(Student[] students) {
@@ -122,6 +130,16 @@ public class Main {
                 System.out.println("   " + students[i].getFirstName() + " " + students[i].getLastName());
             }
         }*/
+        for (Student student : students){
+            if (student.getClassName() == ClassName.N1){
+                student.print();
+            }
+        }
+        System.out.println();
+    }
+
+    private static void printAllStudents(Student[] students) {
+        System.out.println("\033[34mList of all students: \033[0m");
         for (Student student : students){
             if (student.getClassName() == ClassName.N1){
                 student.print();
