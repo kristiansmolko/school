@@ -1,6 +1,6 @@
 package sk.kosickaakademia.kristian.school.hobby;
 
-public class Hobby {
+public abstract class Hobby { //neda sa urobit new Hobby
     private String name;
 
     public Hobby(String name){

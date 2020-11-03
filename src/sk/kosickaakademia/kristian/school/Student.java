@@ -1,5 +1,9 @@
 package sk.kosickaakademia.kristian.school;
 
+import sk.kosickaakademia.kristian.school.hobby.Book;
+import sk.kosickaakademia.kristian.school.hobby.Hobby;
+import sk.kosickaakademia.kristian.school.hobby.Movie;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +16,8 @@ public class Student {
     private Grades grades;
     private Date dob;
     private int salary;
+    private Hobby[] hobbies;
+    private int countHobbies;
 
 
 
@@ -22,6 +28,8 @@ public class Student {
         this.className = className;
         this.salary = salary;
         dob = date;
+        hobbies = new Hobby[5];
+        countHobbies = 0;
     }
 
     public void setSalary(int salary) {
@@ -66,5 +74,24 @@ public class Student {
         System.out.println("Salary: " + salary);
         System.out.println(grades.toString());
 
+    }
+
+    public void addHobby(Hobby newHobby){
+        if (countHobbies == 5){
+            System.out.println("Chyba, nemozes mat viac hobby");
+            return;
+        }
+        hobbies[countHobbies++] = newHobby;
+    }
+
+    public void printHobbies(){
+        System.out.println("\033[34mStudent's hobby: \033[0m");
+        for (int i = 0; i < countHobbies; i++) {
+            if (hobbies[i] instanceof Book)
+                System.out.print("\033[33m" + ((Book) hobbies[i]).getAuthor() + "\033[0m" + " - ");
+            if (hobbies[i] instanceof Movie)
+                System.out.print("\033[33m" + ((Movie) hobbies[i]).getYear() + "\033[0m" + " - ");
+            System.out.println(hobbies[i].getName());
+        }
     }
 }

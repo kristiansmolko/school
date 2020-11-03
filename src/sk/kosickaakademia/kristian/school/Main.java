@@ -1,5 +1,9 @@
 package sk.kosickaakademia.kristian.school;
 
+import sk.kosickaakademia.kristian.school.hobby.Book;
+import sk.kosickaakademia.kristian.school.hobby.Movie;
+import sk.kosickaakademia.kristian.school.hobby.Sport;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,16 +15,23 @@ public class Main {
         students = initStudents();
 
         //printN1Students(students);
-        printStudentsWhereAverageLE2(students);
+        //printStudentsWhereAverageLE2(students);
         //printThisYears(students);
         //printAge(students);
-        /*for(Student student : students){
-            student.print();
-        }*/
+        //sortByAverage(students);
+        //System.out.println("Sorted");
+        //printAverageAllStudents(students);
+        Book b1 = new Book("Hlava XXII", "J. Heller");
+        students[0].addHobby(b1);
+        Sport s1 = new Sport("hockey");
+        students[0].addHobby(s1);
+        Book b2 = new Book("Marina", "A. Sladkovic");
+        students[0].addHobby(b2);
+        Movie m1 = new Movie("Aladdin", 2019);
+        students[0].addHobby(m1);
 
-        sortByAverage(students);
-        System.out.println("Sorted");
-        printAverageAllStudents(students);
+        students[0].printHobbies();
+
 
     }
 
@@ -118,8 +129,6 @@ public class Main {
         }
         System.out.println();
     }
-
-
 
     private static Student[] initStudents() {
         Student[] s = new Student[10];
