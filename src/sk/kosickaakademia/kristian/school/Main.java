@@ -11,13 +11,30 @@ public class Main {
         students = initStudents();
 
         //printN1Students(students);
-        //printStudentsWhereAverageLE2(students);
+        printStudentsWhereAverageLE2(students);
         //printThisYears(students);
-        printAge(students);
+        //printAge(students);
         /*for(Student student : students){
             student.print();
         }*/
 
+        sortByAverage(students);
+        System.out.println("Sorted");
+        printAverageAllStudents(students);
+
+    }
+
+    private static void sortByAverage(Student[] students) {
+        int n = students.length;
+        for (int i = 0; i <= n-1; i++){
+            for (int j = 0; j < n-1-i; j++){
+                if (students[j].getGrades().getAverage() > students[j+1].getGrades().getAverage()){
+                    Student temp = students[j];
+                    students[j] = students[j+1];
+                    students[j+1] = temp;
+                }
+            }
+        }
     }
 
     //1.1.2000 "2000-1-1"
@@ -80,10 +97,9 @@ public class Main {
     private static void printStudentsWhereAverageLE2(Student[] students) {
         System.out.println("\033[34mList of students with average of 2 or less: \033[0m");
         for (int i = 0; i < students.length; i++){
-            Grades grades = students[i].getGrades();
-            double average = (double) (grades.getMat() + grades.getEng() + grades.getPro())/3;
+            double average = students[i].getGrades().getAverage();
             if (average <= 2){
-                System.out.println("   " + students[i].getFirstName() + " " + students[i].getLastName());
+                System.out.println("   " + students[i].getFirstName() + " " + students[i].getLastName() + " " + average);
             }
         }
     }
@@ -156,5 +172,14 @@ public class Main {
             e.printStackTrace();
         }
         return dobS1;
+    }
+
+    private static void printAverageAllStudents(Student[] students) {
+        System.out.println("\033[34mList of all students: \033[0m");
+
+        for (Student student : students){
+            System.out.println(student.getFirstName() + " " + student.getLastName() + " " + student.getGrades().getAverage());
+        }
+
     }
 }

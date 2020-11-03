@@ -23,6 +23,10 @@ public class Grades {
         return pro;
     }
 
+    public double getAverage(){
+        return(mat+eng+pro)/3.0;
+    }
+
     @Override
     public String toString() {
         return "Grades: MAT: " + mat + "  ENG: " + eng + "  PRO: " + pro;
