@@ -87,7 +87,7 @@ public class Student {
 
     public void printHobbies(){
         System.out.println();
-        System.out.println("\033[34mStudent's hobby: \033[0m");
+        System.out.println("\033[34mStudent's perks: \033[0m");
         for (int i = 0; i < countHobbies; i++) {
             if (hobbies[i] instanceof Programming)
                 System.out.print("\033[35m");
