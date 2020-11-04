@@ -43,7 +43,7 @@ public class Main {
         Dog d1 = new Dog("Husky");
         students[9].choosePet(d1);
         students[8].choosePet(new Fish(9));
-
+        students[1].choosePet(new Turtle("Turta"));
 
         printAllStudents(students);
     }

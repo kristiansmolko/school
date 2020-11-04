@@ -110,6 +110,8 @@ public class Student {
         if (animal == null);
         else if (animal instanceof Dog || animal instanceof Cat || animal instanceof Fish || animal instanceof Turtle)
             pet = animal;
+        else
+            System.out.println("\033[31mYou can't have this type of animal!\033[0m");
     }
 
     public void printPet(){
