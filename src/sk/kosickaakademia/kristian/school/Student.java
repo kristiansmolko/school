@@ -1,5 +1,6 @@
 package sk.kosickaakademia.kristian.school;
 
+import sk.kosickaakademia.kristian.school.animal.*;
 import sk.kosickaakademia.kristian.school.hobby.*;
 
 import java.text.DateFormat;
@@ -16,6 +17,7 @@ public class Student {
     private int salary;
     private Hobby[] hobbies;
     private int countHobbies;
+    private Animal pet;
 
     public Student(String fname, String lastName, Grades grades, Date date, ClassName className, int salary){
         firstName = fname;
@@ -26,6 +28,8 @@ public class Student {
         dob = date;
         hobbies = new Hobby[5];
         countHobbies = 0;
+        pet = null;
+
     }
 
     public void setSalary(int salary) {
@@ -70,6 +74,7 @@ public class Student {
         System.out.println("Salary: " + salary);
         System.out.println(grades.toString());
         printHobbies();
+        printPet();
     }
 
     public void addHobby(Hobby newHobby){
@@ -81,6 +86,7 @@ public class Student {
     }
 
     public void printHobbies(){
+        System.out.println();
         System.out.println("\033[34mStudent's hobby: \033[0m");
         for (int i = 0; i < countHobbies; i++) {
             if (hobbies[i] instanceof Programming)
@@ -97,6 +103,27 @@ public class Student {
             }
             System.out.println();
         }
+        System.out.println();
+    }
+
+    public void choosePet(Animal animal){
+        if (animal == null);
+        else if (animal instanceof Dog || animal instanceof Cat || animal instanceof Fish || animal instanceof Turtle)
+            pet = animal;
+    }
+
+    public void printPet(){
+        System.out.println("\033[32mStudent's pets:\033[0m");
+        if (pet == null)
+            System.out.println("You don't have a pet");
+        else if (pet instanceof Dog)
+            System.out.println("You have a dog named: \033[32m" + ((Dog) pet).getName() + "\033[0m");
+        else if (pet instanceof Cat)
+            System.out.println("You have a cat named: \033[32m" + ((Cat) pet).getName() + "\033[0m");
+        else if (pet instanceof Turtle)
+            System.out.println("You have a turtle named: \033[32m" + ((Turtle) pet).getName() + " \033[0m");
+        else if (pet instanceof Fish)
+            System.out.println("You have \033[32m" + ((Fish) pet).getCount() + " fishes\033[0m");
         System.out.println();
     }
 }

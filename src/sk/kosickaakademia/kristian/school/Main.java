@@ -1,6 +1,7 @@
 package sk.kosickaakademia.kristian.school;
 
 import sk.kosickaakademia.kristian.school.hobby.*;
+import sk.kosickaakademia.kristian.school.animal.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,6 +40,10 @@ public class Main {
         students[5].addHobby(g1);
         students[4].addHobby(g1);
         students[9].addHobby(p1);
+        Dog d1 = new Dog("Husky");
+        students[9].choosePet(d1);
+        students[8].choosePet(new Fish(9));
+
 
         printAllStudents(students);
     }
@@ -141,9 +146,7 @@ public class Main {
     private static void printAllStudents(Student[] students) {
         System.out.println("\033[34mList of all students: \033[0m");
         for (Student student : students){
-            if (student.getClassName() == ClassName.N1){
-                student.print();
-            }
+            student.print();
         }
         System.out.println();
     }
